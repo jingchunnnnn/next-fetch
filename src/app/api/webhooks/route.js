@@ -76,7 +76,7 @@ export async function POST(req) {
             },
           });
         } catch (error) {
-          console.log('Error updating user metadata:', error.message);
+          console.log('Error updating user metadata:', error);
         }
       }
     } catch (error) {
