@@ -3,7 +3,7 @@ import "../globals.css";
 import LeftSidebar from "../../components/LeftSidebar";
 import RightSidebar from "../../components/RightSidebar"
 import Loader from "../../components/Loader"
-import {ClerkProvider, ClerkLoaded, ClerkLoading} from '@clerk/nextjs'
+import { ClerkProvider, ClerkLoaded, ClerkLoading } from '@clerk/nextjs'
 
 const geistSans = localFont({
   src: ".././fonts/GeistVF.woff",
