@@ -11,7 +11,7 @@ export default function Input() {
     }
     return (
         <div className="flex border-b border-gray-200 p-3 space-x w-full">
-            <img 
+            <img
               src={user.imageUrl}
               alt='user-profile-photo'
               className="h-11 w-11 rounded-full cursor-pointer hover:brightness-90 object-cover mr-2"
