@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { HiHome } from 'react-icons/hi'
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from '@clerk/nextjs'
+import MiniProfile from "./MiniProfile"
 
 export default function LeftSidebar() {
   return (
@@ -27,6 +28,9 @@ export default function LeftSidebar() {
             <SignInButton className="flex items-center justify-center text-yellow-200 bg-violet-500 font-semibold rounded-full hover:brightness-75 transition-all duration-200 w-48 h-9 shadow-md hidden xl:inline" />
           </SignedOut>
         </div>
+        <SignedIn>
+          <MiniProfile />
+        </SignedIn>
     </div>
   )
 }
