@@ -3,11 +3,6 @@ import { headers } from 'next/headers';
 import clerkClient from '@/lib/clerkClient';
 import { createOrUpdateUser, deleteUser } from '@/lib/actions/user';
 
-
-const clerkClient = new Clerk({
-  apiKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY, 
-});
-
 export async function POST(req) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
