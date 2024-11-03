@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/backend": "^1.15.2",
+    "@clerk/backend": "^1.15.5",
     "@clerk/nextjs": "^6.0.2",
     "firebase": "^11.0.1",
     "lucide-react": "^0.454.0",
