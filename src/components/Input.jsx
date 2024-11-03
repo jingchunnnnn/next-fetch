@@ -15,7 +15,7 @@ export default function Input() {
   const { user, isSignedIn, isLoaded } = useUser();
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [imageFileUplaoding, setImageFileUploading] = useState(false);
+  const [imageFileUploading, setImageFileUploading] = useState(false);
   const [text, setText] = useState('');
   const [postLoading, setPostLoading] = useState(false);
   const imagePickRef = useRef(null);
