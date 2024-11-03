@@ -72,7 +72,7 @@ export async function POST(req) {
         try {
           await clerkClient.users.updateUserMetadata(id, {
             publicMetadata: {
-              userMongoId: user.id,
+              userMongoId: user._id,
             },
           });
         } catch (error) {
