@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
 import { useUser } from "@clerk/nextjs"
 import { HiOutlinePhotograph } from "react-icons/hi"
 import { useRef, useState, useEffect } from "react"
-import { app } from "@/firebase";
+import { app } from "../firebase";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 export default function Input() {
@@ -11,6 +11,8 @@ export default function Input() {
     const [imageFileUrl, setImageFileUrl] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
     const [imageFileUploading, setImageFileUploading] = useState(false);
+    const [text, setText] = useState('');
+    const [postLoading, setPostLoading] = useState(false);
     const imagePickRef = useRef(null);
 
     if (!isSignedIn || !isLoaded) {
@@ -59,6 +61,29 @@ export default function Input() {
         )
     }
 
+    const handleSubmit = async () => {
+        setPostLoading(true);
+        const response = await fetch('api/post/create', {
+            method: 'POST',
+            header: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userMongoId: user.publicMetadata.userMongoId,
+                name: user.fullName,
+                username: user.username,
+                text,
+                profileImg: user.imageUrl,
+                image: imageFileUrl,
+            }),
+        });
+        setPostLoading(false);
+        setText('')
+        setSelectedFile(null);
+        setImageFileUrl(null);
+        // location.reload();
+    }
+
     return (
         <div className="flex border-b border-gray-200 p-3 space-x w-full">
             <img
@@ -71,6 +96,8 @@ export default function Input() {
                   className="w-full border-none outline-none tracking-wide min-h-[50px] text-black bg-gray-200"
                   placeholder="Write a caption"
                   rows='2'
+                  value={text}
+                  onChange={(e) => {setText(e.target.value)}}
                 ></textarea>
                 {selectedFile && (
                     <img
@@ -97,8 +124,10 @@ export default function Input() {
                       onChange={addImageToPost}
                     />
                     <button 
-                      disabled
-                      className="bg-violet-500 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:bg-indigo-300 disabled:opacity-50">
+                      disabled={ text.trim() === '' || postLoading || imageFileUploading }
+                      className="bg-violet-500 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:bg-indigo-300 disabled:opacity-50"
+                      onClick={handleSubmit}
+                    >
                         Post
                     </button>
                 </div>
