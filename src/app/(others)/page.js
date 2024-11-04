@@ -2,7 +2,7 @@ import Feed from '@/components/Feed';
 import Input from '@/components/Input';
 
 export default async function Home() {
-  let data = null;
+  let data = [];
   try {
     const result = await fetch(process.env.URL + '/api/post/all', {
       method: 'POST',
