@@ -90,7 +90,7 @@ export default function Input() {
   }
 
   return (
-    <div className='flex p-3 space-x-3 w-full'>
+    <div className='flex p-3 space-x-3 w-full bg-light-brown'>
       <img
         src={user.imageUrl}
         alt='user-img'
@@ -131,7 +131,7 @@ export default function Input() {
           />
           <button
             disabled={text.trim() === '' || postLoading || imageFileUploading}
-            className='bg-light-brown text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50'
+            className='bg-light-brown text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50 mr-2 mb-2'
             onClick={handleSubmit}
           >
             Post

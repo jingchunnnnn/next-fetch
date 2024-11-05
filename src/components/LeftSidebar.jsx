@@ -5,7 +5,7 @@ import MiniProfile from "./MiniProfile"
 
 export default function LeftSidebar() {
   return (
-    <div className="flex flex-col gap-4 p-3 max-w">
+    <div className="flex flex-col items-center gap-4 p-10 mx-auto">
         <Link href='/'>
             <Image 
             src='/fetchLogo.png'

@@ -20,7 +20,7 @@ export default function Post({ post }) {
               {post?.name}
             </h4>
             <span className='text-xs truncate max-w-32'>@{post?.username}</span>
-            <span className='text-xl text-gray-700'>·</span>
+            <span className='text-2xl text-gray-700 mt-0.5'>·</span>
             <span className='text-xs text-gray-700 flex-1 truncate max-w-32'>
               {moment(post?.createdAt).fromNow()}
             </span>
