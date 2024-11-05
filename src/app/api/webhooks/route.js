@@ -98,10 +98,22 @@ export async function POST(req) {
   }
 
   if (eventType === 'organization.created' || eventType === 'organization.updated') {
-    const { id, name, metadata } = evt?.data;
+    const { name, metadata } = evt?.data;
 
     try {
-      await createOrUpdateOrganization(id, name, metadata);
+      const org = await createOrUpdateOrganization(id, name, metadata);
+
+      if (eventType === 'organization.created' && org) {
+        try {
+          await clerkClient.organizations.updateOrganizationMetadata(id, {
+            publicMetadata: {
+              organizationMongoId: org._id,
+            },
+          });
+        } catch (error) {
+          console.log('Error updating organization metadata:', error);
+        }
+      }
     } catch (error) {
       console.log('Error creating or updating organization:', error);
       return new Response('Error occurred', {
@@ -111,7 +123,6 @@ export async function POST(req) {
   }
 
   if (eventType === 'organization.deleted') {
-    const { id } = evt?.data;
     try {
       await deleteOrganization(id);
     } catch (error) {
