@@ -90,17 +90,17 @@ export default function Input() {
   }
 
   return (
-    <div className='flex border-b border-gray-200 p-3 space-x-3 w-full'>
+    <div className='flex p-3 space-x-3 w-full'>
       <img
         src={user.imageUrl}
         alt='user-img'
-        className='h-11 w-11 rounded-full cursor-pointer hover:brightness-95 object-cover'
+        className='h-11 w-11 rounded-full transition-transform duration-200 cursor-pointer hover:scale-125 object-cover'
       />
-      <div className='w-full divide-y divide-gray-200'>
+      <div className='w-full border border-light-green bg-beige'>
         <textarea
-          className='w-full border-none outline-none tracking-wide min-h-[50px] text-gray-700 '
-          placeholder='Whats happening'
-          rows='2'
+          className='ml-1 w-2xl border-none outline-none tracking-wide min-h-[50px] text-gray-700 bg-beige'
+          placeholder='Add your caption'
+          rows='3'
           value={text}
           onChange={(e) => setText(e.target.value)}
         ></textarea>
@@ -119,7 +119,7 @@ export default function Input() {
         )}
         <div className='flex items-center justify-between pt-2.5'>
           <HiOutlinePhotograph
-            className='h-10 w-10 p-2 text-sky-500 hover:bg-sky-100 rounded-full cursor-pointer'
+            className='h-10 w-10 p-2 transition-transform duration-500 text-dark-green hover:scale-150 hover:text-light-green rounded-full cursor-pointer'
             onClick={() => imagePickRef.current.click()}
           />
           <input
@@ -131,7 +131,7 @@ export default function Input() {
           />
           <button
             disabled={text.trim() === '' || postLoading || imageFileUploading}
-            className='bg-blue-400 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50'
+            className='bg-light-brown text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50'
             onClick={handleSubmit}
           >
             Post

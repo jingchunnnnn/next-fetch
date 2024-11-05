@@ -5,7 +5,7 @@ import Icons from './Icons';
 
 export default function Post({ post }) {
   return (
-    <div className='flex p-3 border-b border-gray-200 w-full hover:bg-gray-50'>
+    <div className='flex p-3 w-full hover:bg-dark-beige'>
       <Link href={`/users/${post?.username}`}>
         <img
           src={post?.profileImg}
@@ -20,16 +20,15 @@ export default function Post({ post }) {
               {post?.name}
             </h4>
             <span className='text-xs truncate max-w-32'>@{post?.username}</span>
-            {/* add dot space here */}
-            <span className='text-xl text-gray-500'>·</span>
-            <span className='text-xs text-gray-500 flex-1 truncate max-w-32'>
+            <span className='text-xl text-gray-700'>·</span>
+            <span className='text-xs text-gray-700 flex-1 truncate max-w-32'>
               {moment(post?.createdAt).fromNow()}
             </span>
           </div>
           <HiDotsHorizontal className='text-sm' />
         </div>
         <Link href={`/posts/${post?._id}`}>
-          <p className='text-gray-800 text-sm my-3 w-full'>{post?.text}</p>
+          <p className='text-black text-sm my-3 w-full'>{post?.text}</p>
         </Link>
         <Link href={`/posts/${post?._id}`}>
           <img src={post?.image} className='rounded-2xl mr-2' />

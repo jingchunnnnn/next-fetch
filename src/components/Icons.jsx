@@ -69,17 +69,17 @@ export default function Icons({ post }) {
 
 
   return (
-    <div className='flex justify-start gap-5 p-2 text-gray-500'>
+    <div className='flex justify-start gap-5 p-2 text-black'>
       <div className='flex items-center'>
         {isLiked ? (
           <HiHeart
             onClick={likePost}
-            className='h-8 w-8 cursor-pointer rounded-full  transition duration-500 ease-in-out p-2 text-red-600 hover:text-red-500 hover:bg-red-100'
+            className='h-8 w-8 cursor-pointer rounded-full transition-transform duration-500 ease-in-out p-2 text-red-400 hover:text-red-500 hover:scale-150'
           />
         ) : (
           <HiOutlineHeart
             onClick={likePost}
-            className='h-8 w-8 cursor-pointer rounded-full  transition duration-500 ease-in-out p-2 hover:text-red-500 hover:bg-red-100'
+            className='h-8 w-8 cursor-pointer rounded-full transition-transform duration-500 ease-in-out p-2 text-red-400 hover:text-red-500 hover:scale-150'
           />
         )}
         {likes.length > 0 && (
@@ -90,7 +90,7 @@ export default function Icons({ post }) {
       </div>
       <div className='flex items-center'>
         <HiOutlineChat
-          className='h-8 w-8 cursor-pointer rounded-full  transition duration-500 ease-in-out p-2 hover:text-sky-500 hover:bg-sky-100'
+          className='h-8 w-8 cursor-pointer rounded-full transition-transform duration-500 ease-in-out p-2 text-sky-400 hover:scale-150'
           onClick={() => {
             if (!user) {
               router.push('/sign-in');
@@ -107,7 +107,7 @@ export default function Icons({ post }) {
       {user && user.publicMetadata.userMongoId === post.user && (
         <HiOutlineTrash
           onClick={deletePost}
-          className='h-8 w-8 cursor-pointer rounded-full  transition duration-500 ease-in-out p-2 hover:text-red-500 hover:bg-red-100'
+          className='h-8 w-8 cursor-pointer rounded-full transition-transform duration-500 ease-in-out p-2 hover:text-gray-300 hover:scale-150'
         />
       )}
     </div>

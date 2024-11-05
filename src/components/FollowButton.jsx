@@ -26,7 +26,7 @@ export default function FollowButton({ user: userFromProfilePage }) {
   return (
     <button
       onClick={handleFollow}
-      className='bg-blue-500 text-white px-4 py-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed'
+      className='bg-dark-brown text-white px-4 py-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed'
       disabled={
         !user || user.publicMetadata.userMongoId === userFromProfilePage._id
       }
