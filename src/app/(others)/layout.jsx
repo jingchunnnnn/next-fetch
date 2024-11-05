@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
                   <LeftSidebar />
                 </div>
                 <div className="w-2xl flex-1">{children}</div>
-                <div className="flex-col p-3 h-screen border-l border-black hidden lg:flex w-[24rem]">
+                <div className="flex-col p-3 border-l border-black hidden lg:flex w-[24rem]">
                   <RightSidebar />
                 </div>
               </div>
