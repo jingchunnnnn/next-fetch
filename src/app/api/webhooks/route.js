@@ -105,7 +105,7 @@ export async function POST(req) {
 
       if (eventType === 'organization.created' && org) {
         try {
-          await clerkClient.organizations.updateOrganizationMetadata(id, {
+          (await clerkClient()).organizations.updateOrganizationMetadata(id, {
             publicMetadata: {
               organizationMongoId: org._id,
             },
