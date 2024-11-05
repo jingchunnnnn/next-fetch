@@ -1,4 +1,5 @@
 import User from '../models/user.model';
+import Organization from '../models/organization.model';
 
 import { connect } from '../mongodb/mongoose';
 
@@ -37,5 +38,38 @@ export const deleteUser = async (id) => {
     await User.findOneAndDelete({ clerkId: id });
   } catch (error) {
     console.log('Error deleting user:', error);
+  }
+};
+
+export const createOrUpdateOrganization = async (id, name, metadata) => {
+  try {
+    await connect();
+    const organization = await Organization.findOneAndUpdate(
+      { clerkId: id },
+      {
+        $set: {
+          name,
+          metadata,
+        },
+      },
+      { new: true, upsert: true }
+    );
+
+    return organization;
+  } catch (error) {
+    console.log('Error creating or updating organization:', error);
+    throw error; 
+  }
+};
+
+export const deleteOrganization = async (id) => {
+  try {
+    await connect();
+    const result = await Organization.findOneAndDelete({ clerkId: id });
+
+    return result;
+  } catch (error) {
+    console.log('Error deleting organization:', error);
+    throw error;
   }
 };

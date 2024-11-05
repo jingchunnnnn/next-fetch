@@ -94,11 +94,11 @@ export default function Input() {
       <img
         src={user.imageUrl}
         alt='user-img'
-        className='h-11 w-11 rounded-full transition-transform duration-200 cursor-pointer hover:scale-125 object-cover'
+        className='h-11 w-11 rounded-full object-cover'
       />
       <div className='w-full border border-light-green bg-beige'>
         <textarea
-          className='ml-1 w-2xl border-none outline-none tracking-wide min-h-[50px] text-gray-700 bg-beige'
+          className=' ml-1 w-[660px] border-none outline-none tracking-wide min-h-[50px] text-gray-700 bg-beige'
           placeholder='Add your caption'
           rows='3'
           value={text}

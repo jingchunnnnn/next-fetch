@@ -1,10 +1,9 @@
 import { Webhook } from 'svix';
 import { headers } from 'next/headers';
 import { clerkClient } from '@clerk/nextjs/server';
-import { createOrUpdateUser, deleteUser } from '@/lib/actions/user';
+import { createOrUpdateOrganization, createOrUpdateUser, deleteOrganization, deleteUser } from '@/lib/actions/user';
 
 export async function POST(req) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
@@ -93,6 +92,31 @@ export async function POST(req) {
     } catch (error) {
       console.log('Error deleting user:', error);
       return new Response('Error occured', {
+        status: 400,
+      });
+    }
+  }
+
+  if (eventType === 'organization.created' || eventType === 'organization.updated') {
+    const { id, name, metadata } = evt?.data;
+
+    try {
+      await createOrUpdateOrganization(id, name, metadata);
+    } catch (error) {
+      console.log('Error creating or updating organization:', error);
+      return new Response('Error occurred', {
+        status: 400,
+      });
+    }
+  }
+
+  if (eventType === 'organization.deleted') {
+    const { id } = evt?.data;
+    try {
+      await deleteOrganization(id);
+    } catch (error) {
+      console.log('Error deleting organization:', error);
+      return new Response('Error occurred', {
         status: 400,
       });
     }

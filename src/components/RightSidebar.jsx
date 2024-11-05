@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { HiSearch } from 'react-icons/hi';
+import Organizations from "./Organizations";
 
 export default function RightSidebar() {
     const [input, setInput] = useState('');
@@ -23,15 +24,18 @@ export default function RightSidebar() {
             <form onSubmit={handleSubmit} className="relative">
                 <input
                     type="text"
-                    placeholder='Search...'
+                    placeholder='Search for a post'
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    className="text-white bg-dark-green rounded-3xl text-sm w-full px-4 py-2 pl-10" 
+                    className="sticky text-white bg-dark-green rounded-3xl text-sm w-full px-4 py-2 pl-10" 
                 />
                 <HiSearch 
                     onClick={handleSubmit}
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-200 cursor-pointer" 
+                    className="absolute left-3 transform -translate-y-7 text-gray-200 cursor-pointer" 
                 />
+                <div>
+                    <Organizations />
+                </div>
             </form>
         </div>
     );
