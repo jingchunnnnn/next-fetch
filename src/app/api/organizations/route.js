@@ -1,15 +1,19 @@
-import { Clerk } from '@clerk/nextjs';
+import Organization from '@/lib/models/organization.model';
+import { connect } from '@/lib/mongodb/mongoose.js';
 
-export default async function handler(req, response) {
-  const clerkClient = new Clerk({
-    apiKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-  });
 
+export const GET = async (req) => {
   try {
-    const organizations = (await clerkClient()).organizations.list();
-    response.status(200).json(organizations);
+    await connect();
+    const organizations = await Organization.find().sort({ createdAt: -1 });
+    return new Response(JSON.stringify(organizations), {
+      status: 200,
+    });
   } catch (error) {
-    response.status(500).json({ error: 'Failed to fetch organizations' });
+    console.log('Error getting organizations:', error);
+    return new Response('Error getting organizations', {
+      status: 500,
+    });
   }
-}
+};
 

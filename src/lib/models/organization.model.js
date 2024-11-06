@@ -10,6 +10,20 @@ const OrganizationSchema = new mongoose.Schema({
     type: String, 
     required: true,
   },
+  description: { 
+    type: String 
+  },
+  members: [{
+    userId: {
+      type: mongoose.Schema.Types.ObjectId, // Reference to User model
+      ref: 'User',
+      required: true,
+    },
+    userMongoId: {
+      type: String,
+      required: true, // Make sure this is required if you need it for every member
+    },
+  }],
   metadata: { 
     type: Object, 
     default: {},
@@ -21,7 +35,7 @@ const OrganizationSchema = new mongoose.Schema({
   updatedAt: { 
     type: Date, 
     default: Date.now,
-  }
+  },
 });
 
 OrganizationSchema.pre('save', function (next) {
