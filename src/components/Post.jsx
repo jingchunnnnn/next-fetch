@@ -5,7 +5,7 @@ import Icons from './Icons';
 
 export default function Post({ post }) {
   return (
-    <div className='flex p-3 w-full hover:bg-dark-beige'>
+    <div className='flex p-3 w-full hover:bg-greyish bg-dark-beige'>
       <Link href={`/users/${post?.username}`}>
         <img
           src={post?.profileImg}

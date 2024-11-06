@@ -26,7 +26,7 @@ export default async function PostPage({ params }) {
         <h2 className='sm:text-lg'>Back</h2>
       </div>
       {!data && <h2 className='text-center mt-5 text-lg'>Post not found</h2>}
-      {data && <Post post={data} />}
+      {data && <Post post={data}/>}
       {data && <Comments comments={data.comments} />}
     </div>
   );

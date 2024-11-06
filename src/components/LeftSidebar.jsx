@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from '@clerk/nextjs'
+import Communities from "./Communities";
 import MiniProfile from "./MiniProfile"
 
 export default function LeftSidebar() {
@@ -25,6 +26,9 @@ export default function LeftSidebar() {
           <SignedOut>
             <SignInButton className="flex items-center justify-center text-white bg-dark-brown font-semibold rounded-full hover:brightness-75 transition-all duration-200 w-48 h-9 shadow-md hidden xl:inline" />
           </SignedOut>
+          <div>
+            <Communities />
+          </div>
         </div>
         <SignedIn>
           <MiniProfile />
