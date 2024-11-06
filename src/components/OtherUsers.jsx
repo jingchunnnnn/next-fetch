@@ -2,15 +2,17 @@
 
 import { useUser } from '@clerk/nextjs';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function GetAllUsers() {
-  const { user } = useUser(); // Get the current user's data
+  const { user } = useUser();
   const [users, setUsers] = useState([]);
-  const [displayedUsers, setDisplayedUsers] = useState([]); // Track users to display
+  const [displayedUsers, setDisplayedUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [visibleUsersCount, setVisibleUsersCount] = useState(3); // Initially show 3 users
+  const [visibleUsersCount, setVisibleUsersCount] = useState(3);
 
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -26,12 +28,21 @@ export default function GetAllUsers() {
         console.log('Current User:', user);
         console.log('Fetched Users:', data);
 
-        // Filter out the current user
         const filteredUsers = data.filter((u) => u.username !== user?.username);
-        setUsers(filteredUsers);
 
-        // Initially, display the first 3 users
-        setDisplayedUsers(filteredUsers.slice(0, visibleUsersCount));
+        const shuffleArray = (array) => {
+          let shuffledArray = [...array];
+          for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+          }
+          return shuffledArray;
+        };
+
+        const shuffledUsers = shuffleArray(filteredUsers);
+
+        setUsers(shuffledUsers);
+        setDisplayedUsers(shuffledUsers.slice(0, visibleUsersCount));
       } catch (error) {
         console.error('Error:', error);
         setError(error.message);
@@ -45,6 +56,10 @@ export default function GetAllUsers() {
 
   const loadMoreUsers = () => {
     setVisibleUsersCount(visibleUsersCount + 3);
+  };
+
+  const handleUserClick = (username) => {
+    router.push(`/users/${username}`);
   };
 
   if (loading) return <div>Loading users...</div>;
@@ -62,6 +77,7 @@ export default function GetAllUsers() {
             <div
               key={user._id}
               className='flex items-center justify-start text-center bg-pinky h-[50px] w-[250px] rounded-full mb-6 cursor-pointer hover:brightness-90'
+              onClick={() => handleUserClick(user.username)}
             >
               {user.avatar && (
                 <img
