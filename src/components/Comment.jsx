@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { HiDotsHorizontal } from 'react-icons/hi';
 export default function Comment({ comment, id }) {
   return (
-    <div className='flex p-3 hover:bg-dark-beige pl-10'>
+    <div className='flex p-3 bg-greyish hover:bg-dark-beige pl-10'>
       <Link href={`/users/${comment?.username}`}>
         <img
           src={comment?.profileImg}

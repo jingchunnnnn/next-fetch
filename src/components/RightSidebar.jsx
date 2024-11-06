@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { HiSearch } from 'react-icons/hi';
+import OtherUsers from "./OtherUsers";
 
 export default function RightSidebar() {
     const [input, setInput] = useState('');
@@ -32,6 +33,7 @@ export default function RightSidebar() {
                     onClick={handleSubmit}
                     className="absolute left-3 transform -translate-y-7 text-gray-200 cursor-pointer" 
                 />
+                <OtherUsers />
             </form>
         </div>
     );
