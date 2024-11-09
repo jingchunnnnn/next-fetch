@@ -19,8 +19,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Fetch!",
-  description: "Fetch!",
+  title: "Fetch! Home Page",
+  description: "Fetch! homepage",
 };
 
 export default function RootLayout({ children }) {

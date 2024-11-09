@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from '@clerk/nextjs'
-import Communities from "./Communities";
 import MiniProfile from "./MiniProfile"
 
 export default function LeftSidebar() {
@@ -16,6 +15,7 @@ export default function LeftSidebar() {
             className="w-48 h-48 bg-light-brown border-8 border-light-brown cursor-pointer m-1 rounded-full transition-all duration-200"
             />
         </Link>
+        <h1 className="font-bold text-4xl font-serif mb-10">Fetch!</h1>
         <Link href='/' className="flex items-center justify-center text-center w-48 h-9 text-white flex items-center p-3 bg-dark-brown rounded-full transition-all duration-200 gap-1 hover:brightness-75">
             <span className="font-bold">Home</span>
         </Link>
@@ -26,9 +26,6 @@ export default function LeftSidebar() {
           <SignedOut>
             <SignInButton className="flex items-center justify-center text-white bg-dark-brown font-semibold rounded-full hover:brightness-75 transition-all duration-200 w-48 h-9 shadow-md hidden xl:inline" />
           </SignedOut>
-          <div>
-            <Communities />
-          </div>
         </div>
         <SignedIn>
           <MiniProfile />

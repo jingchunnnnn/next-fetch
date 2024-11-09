@@ -3,6 +3,25 @@ import Link from 'next/link';
 import Post from '@/components/Post';
 import FollowButton from '@/components/FollowButton';
 
+export const generateMetadata = async ({ params }) => {
+  let data = null;
+  try {
+      const result = await fetch(process.env.URL + '/api/user/get', {
+          method: 'POST',
+          body: JSON.stringify({ username: params.username }),
+          cache: 'no-store',
+      });
+      data = await result.json();
+  } catch (error) {
+      console.error('Failed to fetch data', error);
+  }
+
+  return {
+      title: data ? `user: ${data.username}` : 'User not found',
+      description: "Fetch! user page",
+  };
+};
+
 export default async function UserPage({ params }) {
   let data = null;
   try {
@@ -20,7 +39,7 @@ export default async function UserPage({ params }) {
     data.posts = await userPosts.json();
   } catch (error) {
     console.error('Failed to fetch post', error);
-  }
+  }  
 
   return (
     <div className='max-w-screen mx-auto min-h-screen'>

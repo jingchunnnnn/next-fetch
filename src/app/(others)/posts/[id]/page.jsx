@@ -3,6 +3,28 @@ import Post from '@/components/Post';
 import Link from 'next/link';
 import { HiArrowLeft } from 'react-icons/hi';
 
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(`${process.env.URL}/api/post/get`, {
+      method: 'POST',
+      body: JSON.stringify({ postId: params.id }),
+      cache: 'no-store',
+  });
+
+  if (!res.ok) {
+      return {
+          title: 'Post not found',
+          description: 'The requested post is not available.',
+      };
+  }
+
+  const data = await res.json();
+
+  return {
+      title: data.username ? `Post by ${data.name}` : 'Post not found',
+      description: 'Fetch! post page',
+  };
+};
+
 export default async function PostPage({ params }) {
   let data = null;
   try {

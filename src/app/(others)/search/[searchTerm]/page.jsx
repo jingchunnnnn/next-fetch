@@ -3,6 +3,13 @@ import Link from 'next/link';
 import { HiArrowLeft } from 'react-icons/hi';
 
 
+export const generateMetadata = async ({ params }) => {
+  return {
+      title: `Searching for "${params.searchTerm}"`,
+      description: "Fetch! search page",
+  };
+};
+
 export default async function SearchPage({ params }) {
   let data = null;
   try {
