@@ -16,10 +16,10 @@ export default function Post({ post }) {
       <div className='flex-1'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center space-x-1 whitespace-nowrap'>
-            <h4 className='font-bold text-xs truncate max-w-32'>
+            <h4 className='font-bold text-xs truncate max-w-32 text-black'>
               {post?.name}
             </h4>
-            <span className='text-xs truncate max-w-32'>@{post?.username}</span>
+            <span className='text-xs truncate max-w-32 text-gray-700'>@{post?.username}</span>
             <span className='text-2xl text-gray-700 mt-0.5'>·</span>
             <span className='text-xs text-gray-700 flex-1 truncate max-w-32'>
               {moment(post?.createdAt).fromNow()}

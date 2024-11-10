@@ -87,7 +87,7 @@ export default function GetAllUsers() {
                 />
               )}
               <div className='flex flex-col ml-4'>
-                <span className='text-sm font-semibold'>{user.firstName}</span>
+                <span className='text-sm font-semibold text-black'>{user.firstName}</span>
                 <span className='text-xs text-gray-600'>@{user.username}</span>
               </div>
             </div>

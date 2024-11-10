@@ -60,7 +60,7 @@ export default async function UserPage({ params }) {
                 className='h-16 w-16 rounded-full'
               />
               <div>
-                <h2 className='text-xl font-bold'>
+                <h2 className='text-xl font-bold text-black'>
                   {data.firstName + ' ' + data.lastName}
                 </h2>
                 <p className='text-gray-500'>@{data.username}</p>
@@ -69,11 +69,11 @@ export default async function UserPage({ params }) {
 
             <div className='mt-4 flex space-x-4'>
               <div>
-                <span className='font-bold'>{data.following.length}</span>{' '}
+                <span className='font-bold text-black'>{data.following.length}</span>{' '}
                 Following
               </div>
               <div>
-                <span className='font-bold'>{data.followers.length}</span>{' '}
+                <span className='font-bold text-black'>{data.followers.length}</span>{' '}
                 Followers
               </div>
             </div>
