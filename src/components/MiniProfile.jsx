@@ -11,7 +11,7 @@ export default function MiniProfile() {
   }
 
   return (
-    <div className='mt-60 text-black text-sm flex items-center cursor-pointer p-3 hover:bg-light-brown rounded-full transition-all duration-200 justify-between xl:w-56 w-fit gap-2 bg-dark-brown'>
+    <div className='mt-[240px] text-black text-sm flex items-center cursor-pointer p-3 hover:bg-light-brown rounded-full transition-all duration-200 justify-between xl:w-56 w-fit gap-2 bg-dark-brown'>
       <UserButton />
 
       <div className='hidden xl:inline flex-1 w-8'>

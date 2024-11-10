@@ -67,7 +67,7 @@ export default async function UserPage({ params }) {
               </div>
             </div>
 
-            <div className='mt-4 flex space-x-4'>
+            <div className='mt-4 flex space-x-4 text-black'>
               <div>
                 <span className='font-bold text-black'>{data.following.length}</span>{' '}
                 Following
