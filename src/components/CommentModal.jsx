@@ -129,7 +129,7 @@ export default function CommentModal() {
                 </div>
                 <div className='flex items-center justify-end pt-2.5'>
                   <button
-                    className='bg-blue-400 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50'
+                    className='bg-dark-brown text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50'
                     disabled={input.trim() === '' || postLoading}
                     onClick={sendComment}
                   >
