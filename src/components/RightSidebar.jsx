@@ -20,7 +20,7 @@ export default function RightSidebar() {
     };
 
     return (
-        <div className="sticky top-0 py-1 p-3 h-screen">
+        <div className="flex flex-col h-screen sticky top-0 py-1 p-3 h-screen">
             <form onSubmit={handleSubmit} className="relative">
                 <input
                     type="text"
