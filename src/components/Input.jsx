@@ -98,7 +98,7 @@ export default function Input() {
       />
       <div className='w-full border border-light-green bg-beige'>
         <textarea
-          className='w-full border-none outline-none tracking-wide min-h-[50px] text-gray-700 bg-beige'
+          className='w-full pl-1 border-none outline-none tracking-wide min-h-[50px] text-gray-700 bg-beige'
           placeholder='Add your caption'
           rows='3'
           value={text}
