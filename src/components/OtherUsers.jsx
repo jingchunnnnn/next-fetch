@@ -95,7 +95,7 @@ export default function GetAllUsers() {
         </div>
       </div>
 
-      {users.length > visibleUsersCount && (
+      {users.length > visibleUsersCount ? (
         <div className="flex justify-center mt-2">
           <button
             onClick={loadMoreUsers}
@@ -104,7 +104,15 @@ export default function GetAllUsers() {
             Show More Users
           </button>
         </div>
-      )}
+      ):
+        <div className="flex justify-center mt-2">
+          <span
+            className="bg-dark-green text-white text-sm px-1 py-1 rounded-md brightness-75"
+          >
+            All Users Displayed
+          </span>
+        </div>
+      }
     </div>
   );
 }

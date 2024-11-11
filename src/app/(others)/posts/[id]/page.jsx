@@ -7,7 +7,7 @@ export const generateMetadata = async ({ params }) => {
   const res = await fetch(`${process.env.URL}/api/post/get`, {
       method: 'POST',
       body: JSON.stringify({ postId: params.id }),
-      cache: 'default',
+      cache: 'no-store',
   });
 
   if (!res.ok) {
